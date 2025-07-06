@@ -67,7 +67,7 @@ def vote(uuid=None):
 
 @app.route("/result/<uuid>")
 def result(uuid=None):
-    title = r.hget(f"created-polls:{uuid}", "title")
+    title = r.hget(f"created-polls:{uuid}", "title") # todo: serialization lib?
     date1 = r.hget(f"created-polls:{uuid}", "date1")
     date2 = r.hget(f"created-polls:{uuid}", "date2")
     date3 = r.hget(f"created-polls:{uuid}", "date3")

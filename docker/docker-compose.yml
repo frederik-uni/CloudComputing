@@ -3,11 +3,11 @@ services:
     build:
       context: redis
       dockerfile: redis.dockerfile
-    container_name: redis
+    container_name: redis #todo: why
     ports:
       - "6379:6379"
     environment:
-      REDIS_PASSWORD: 1234
+      REDIS_PASSWORD: 1234 # todo: global env or .env file
     volumes:
       - redis-data:/var/lib/redis
     networks:
@@ -19,7 +19,7 @@ services:
       dockerfile: webserver.dockerfile
     container_name: webserver1
     environment:
-      REDIS_PASSWORD: 1234
+      REDIS_PASSWORD: 1234 # todo: global env or .env file
       REDIS_NAME: redis
       DOMAIN: https://localhost
     depends_on:
@@ -56,17 +56,15 @@ services:
       WEBSERVER_2: webserver2:5000
       SERVER_NAME: localhost
     volumes:
-      - ./nginx/keys:/etc/nginx/ssl/
+      - ./nginx/keys:/etc/nginx/ssl:ro
     networks:
       - load_balancer
 
-
 networks:
   webstack:
-    driver: bridge
+    driver: bridge #default?
   load_balancer:
     driver: bridge
 
 volumes:
   redis-data:
-
