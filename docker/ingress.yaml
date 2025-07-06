@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web
+  namespace: meet
+spec:
+  rules:
+    - http:
+        paths:
+          - backend:
+              service:
+                name: webserver
+                port:
+                  name: http
+            pathType: Prefix
+            path: "/"

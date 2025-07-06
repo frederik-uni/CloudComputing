@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Meeting-Planner - Vote</title>
+    <link rel="stylesheet" href="/static/css/vote.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favico/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favico/favicon-16x16.png">
+    <link rel="manifest" href="/static/favico/site.webmanifest">
+</head>
+<header>
+    <a class="home" href="/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-house-door-fill"
+             viewBox="0 0 16 16">
+            <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5"/>
+        </svg>
+    </a>
+    <h1 class="centered">Vote on a Time and Date</h1>
+</header>
+<body>
+<form method="POST" action="/api/vote/{{ uuid }}" class="input-group centered">
+    <h2>{{ title }}</h2>
+    {% if date1 %}
+    <div class="line-block border">
+        <label class=label for="date1">{{ date1 }}</label>
+        <input class=input type="checkbox" name="date1" id="date1">
+    </div>
+    {% endif %}
+    {% if date2 %}
+    <div class="line-block border">
+        <label class=label for="date2">{{ date2 }}</label>
+        <input class=input type="checkbox" name="date2" id="date2">
+    </div>
+    {% endif %}
+    {% if date3 %}
+    <div class="line-block border">
+        <label class=label for="date3">{{ date3 }}</label>
+        <input class=input type="checkbox" name="date3" id="date3">
+    </div>
+    {% endif %}
+    <div class="line-block">
+        <input {{ disabled }} class=input type="submit" value="Vote">
+    </div>
+    {% if disabled %}
+    <p>You already voted!</p>
+    {% endif %}
+</form>
+</body>
+</html>

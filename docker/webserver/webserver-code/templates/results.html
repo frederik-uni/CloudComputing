@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" style="
+--bar-vote1: calc(({{ vote1 }} / {{ total }}) * 100%);
+--bar-vote2: calc(({{ vote2 }} / {{ total }}) * 100%);
+--bar-vote3: calc(({{ vote3 }} / {{ total }}) * 100%);
+">
+<head>
+    <meta charset="UTF-8">
+    <title>Meeting-Planner - Results</title>
+    <link rel="stylesheet" href="/static/css/results.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favico/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favico/favicon-16x16.png">
+    <link rel="manifest" href="/static/favico/site.webmanifest">
+</head>
+<header>
+    <a class="home" href="/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-house-door-fill"
+             viewBox="0 0 16 16">
+            <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5"/>
+        </svg>
+    </a>
+    <h1 class="centered">Here are the Results for the Vote</h1>
+</header>
+<body>
+<div class="centered">
+    <h2 class="centered">{{ title }}</h2>
+    {% if date1 %}
+    <p class="centered" id="vote1">{{ date1 }}: {{vote1}}</p>
+    <br>
+    {% endif %}
+    {% if date2 %}
+    <p class="centered" id="vote2">{{ date2 }}: {{vote2}}</p>
+    <br>
+    {% endif %}
+    {% if date3 %}
+    <p class="centered" id="vote3">{{ date3 }}: {{vote3}}</p>
+    {% endif %}
+    <button class="input centered" onClick="window.location.reload();">Refresh</button>
+</div>
+</body>
+</html>

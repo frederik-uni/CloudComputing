@@ -1,0 +1,30 @@
+http {
+    upstream meeting_planner {
+        server $WEBSERVER_1;
+        server $WEBSERVER_2;
+    }
+
+    server {
+        listen 80;
+
+        location / {
+            proxy_pass http://meeting_planner;
+        }
+    }
+    server {
+        listen 443 ssl;
+        server_name $SERVER_NAME;
+
+        ssl_certificate /etc/nginx/ssl/fullchain.pem;
+        ssl_certificate_key /etc/nginx/ssl/privkey.pem;
+
+        ssl_protocols TLSv1.2 TLSv1.3;
+
+        location / {
+            proxy_pass http://meeting_planner;
+        }
+    }
+}
+
+
+events {}

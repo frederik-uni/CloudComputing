@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    font-family: "Roboto", serif;
+    background-color: #292929;
+    color: white;
+}
+
+h1, h2 {
+    text-align: center;
+    width: fit-content;
+}
+
+a {
+    display: inline;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-top: 11px;
+    padding-bottom: 10px;
+    width: 225px;
+    min-width: 225px;
+    max-width: 225px;
+    text-align: center;
+    color: black;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border: 2px solid transparent;
+    background-color: #73737e;
+    border-radius: .5rem;
+    transition: border-color .3s cubic-bezier(.25, .01, .25, 1) 0s, color .3s cubic-bezier(.25, .01, .25, 1) 0s, background .2s cubic-bezier(.25, .01, .25, 1) 0s;
+
+}
+
+a:hover {
+    border-color: white;
+}
+.flex {
+    display: flex;
+    justify-content: center;
+
+}
+.centered {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.copyButton {
+    margin-bottom: auto !important;
+}
+
+.input {
+    margin-bottom: .9rem;
+    max-width: 190px;
+    height: 44px;
+    background-color: #74747f;
+    border-radius: .5rem;
+    padding: 0 1rem;
+    border: 2px solid transparent;
+    font-size: 1rem;
+    transition: border-color .3s cubic-bezier(.25, .01, .25, 1) 0s, color .3s cubic-bezier(.25, .01, .25, 1) 0s, background .2s cubic-bezier(.25, .01, .25, 1) 0s;
+}
+
+.label {
+    display: block;
+    margin-bottom: .3rem;
+    font-size: large;
+    font-weight: bold;
+    transition: color .3s cubic-bezier(.25, .01, .25, 1) 0s;
+}
+
+.input:hover, .input:focus {
+    outline: none;
+    border-color: #ffffff;
+}
+
+.input:focus {
+    color: rgb(255, 255, 255);
+}
+
+.input-group {
+    width: fit-content;
+}
+
+.home {
+    all: initial;
+    position: absolute;
+    color: white;
+    text-decoration: none;
+}

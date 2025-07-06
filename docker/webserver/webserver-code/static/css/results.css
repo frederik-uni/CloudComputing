@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    font-family: "Roboto", serif;
+    background-color: #292929;
+    color: white;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    font-size: large;
+    min-width: 200px;
+    border: 1px solid white;
+    border-radius: .5rem;
+    position: relative;
+}
+
+p:after {
+    z-index: -1;
+    content: '\A';
+    position: absolute;
+    background: mediumpurple;
+    border-radius: .5rem;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    -webkit-animation: filler 1s ease-in-out;
+    -moz-animation: filler 1s ease-in-out;
+    animation: filler 1s ease-in-out;
+}
+
+#vote1:after {
+    width: var(--bar-vote1);
+}
+
+#vote2:after {
+    width: var(--bar-vote2);
+}
+
+#vote3:after {
+    width: var(--bar-vote3);
+}
+
+@-webkit-keyframes filler {
+    0% {
+        width: 0;
+    }
+}
+
+@-moz-keyframes filler {
+    0% {
+        width: 0;
+    }
+}
+
+@keyframes filler {
+    0% {
+        width: 0;
+    }
+}
+
+.centered {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.input {
+    margin-left: calc(50% - 190px / 2);
+    margin-bottom: .9rem;
+    margin-top: .9rem;
+    max-width: 190px;
+    width: 190px;
+    height: 44px;
+    background-color: #74747f;
+    border-radius: .5rem;
+    padding: 0 1rem;
+    border: 2px solid transparent;
+    font-size: 1rem;
+    transition: border-color .3s cubic-bezier(.25, .01, .25, 1) 0s, color .3s cubic-bezier(.25, .01, .25, 1) 0s, background .2s cubic-bezier(.25, .01, .25, 1) 0s;
+}
+
+.input:hover, .input:focus {
+    outline: none;
+    border-color: #ffffff;
+}
+
+.input:focus {
+    color: rgb(255, 255, 255);
+}
+
+.home {
+    position: absolute;
+    color: white;
+    text-decoration: none;
+}

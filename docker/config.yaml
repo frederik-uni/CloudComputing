@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: meet
+data:
+  REDIS_PASSWORD: "1234"
+  REDIS_NAME: "db"
+  DOMAIN: "https://localhost"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-secret
+  namespace: meet
+stringData:
+  REDIS_PASSWORD: "1234"

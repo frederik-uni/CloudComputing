@@ -1,0 +1,72 @@
+services:
+  redis:
+    build:
+      context: redis
+      dockerfile: redis.dockerfile
+    container_name: redis
+    ports:
+      - "6379:6379"
+    environment:
+      REDIS_PASSWORD: 1234
+    volumes:
+      - redis-data:/var/lib/redis
+    networks:
+      - webstack
+
+  webserver1:
+    build:
+      context: webserver
+      dockerfile: webserver.dockerfile
+    container_name: webserver1
+    environment:
+      REDIS_PASSWORD: 1234
+      REDIS_NAME: redis
+      DOMAIN: https://localhost
+    depends_on:
+      - redis
+    networks:
+      - webstack
+      - load_balancer
+
+  webserver2:
+    build:
+      context: webserver
+      dockerfile: webserver.dockerfile
+    container_name: webserver2
+    environment:
+      REDIS_PASSWORD: 1234
+      REDIS_NAME: redis
+      DOMAIN: https://localhost
+    depends_on:
+      - redis
+    networks:
+      - webstack
+      - load_balancer
+
+  nginx:
+    build:
+      context: nginx
+      dockerfile: nginx.dockerfile
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      WEBSERVER_1: webserver1:5000
+      WEBSERVER_2: webserver2:5000
+      SERVER_NAME: localhost
+    volumes:
+      - ./nginx/keys:/etc/nginx/ssl/
+    networks:
+      - load_balancer
+
+
+networks:
+  webstack:
+    driver: bridge
+  load_balancer:
+    driver: bridge
+
+volumes:
+  redis-data:
+

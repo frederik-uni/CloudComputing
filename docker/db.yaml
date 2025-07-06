@@ -1,0 +1,55 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+  namespace: meet
+spec:
+  selector:
+    app: db
+  ports:
+    - name: db
+      port: 6379
+      targetPort: 6379
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: db
+  namespace: meet
+spec:
+  selector:
+    matchLabels:
+      app: db
+  replicas: 1
+  serviceName: db
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+        - name: db
+          image: redis
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 6379
+          env:
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: REDIS_PASSWORD
+          volumeMounts:
+            - mountPath: /var/lib/redis
+              name: redis-data
+  volumeClaimTemplates:
+    - metadata:
+        name: redis-data
+      spec:
+        accessModes:
+          - "ReadWriteOnce"
+        storageClassName: standard
+        resources:
+          requests:
+            storage: 1Gi

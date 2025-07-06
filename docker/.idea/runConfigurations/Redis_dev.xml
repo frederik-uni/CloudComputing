@@ -1,0 +1,21 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Redis-dev" type="docker-deploy" factoryName="docker-image" server-name="Docker">
+    <deployment type="docker-image">
+      <settings>
+        <option name="imageTag" value="cloud-computing-redis:latest" />
+        <option name="attachToContainerNeeded" value="true" />
+        <option name="containerName" value="redis-dev" />
+        <option name="envVars">
+          <list>
+            <DockerEnvVarImpl>
+              <option name="name" value="REDIS_PASSWORD" />
+              <option name="value" value="1234" />
+            </DockerEnvVarImpl>
+          </list>
+        </option>
+        <option name="commandLineOptions" value="--network webstack" />
+      </settings>
+    </deployment>
+    <method v="2" />
+  </configuration>
+</component>

@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    font-family: "Roboto", serif;
+    background-color: #292929;
+    color: white;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+p {
+    color: red;
+}
+
+.line-block {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.border {
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: .5rem;
+}
+
+.centered {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.input {
+    margin-bottom: .9rem;
+    max-width: 190px;
+    background-color: #74747f;
+    border-radius: .5rem;
+    padding: 0 1rem;
+    border: 2px solid transparent;
+    font-size: 1rem;
+    transition: border-color .3s cubic-bezier(.25, .01, .25, 1) 0s, color .3s cubic-bezier(.25, .01, .25, 1) 0s, background .2s cubic-bezier(.25, .01, .25, 1) 0s;
+}
+
+.input[type=checkbox] {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin-bottom: auto;
+    top: -3px;
+    vertical-align: middle;
+}
+
+.border label {}
+
+.input[type=submit] {
+    height: 40px;
+    width: 100px;
+    margin-left: calc(50% - 100px / 2);
+}
+
+.label {
+    margin-bottom: .3rem;
+    font-size: large;
+    font-weight: bold;
+    transition: color .3s cubic-bezier(.25, .01, .25, 1) 0s;
+}
+
+.input:hover, .input:focus {
+    outline: none;
+    border-color: #ffffff;
+}
+
+.input:focus {
+    color: rgb(255, 255, 255);
+}
+
+.input-group {
+    width: fit-content;
+}
+
+.home {
+    position: absolute;
+    color: white;
+    text-decoration: none;
+}
